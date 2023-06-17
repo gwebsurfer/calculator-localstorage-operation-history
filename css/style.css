@@ -23,6 +23,7 @@ body {
 }
 
 form {
+  width: 200px;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -71,7 +72,7 @@ h1 {
 }
 
 #login {
-  display: none;
+  display: block;
   transition: 2s ease;
 }
 
@@ -86,7 +87,7 @@ h1 {
 }
 
 #logged {
-  display: block;
+  display: none;
   height: 100vh;
   width: 100vw;
 }
@@ -126,7 +127,7 @@ h1 {
   color: var(--color-red);
 }
 
-.result {
+#result {
   height: 80px;
   padding: 20px;
   text-align: right;
