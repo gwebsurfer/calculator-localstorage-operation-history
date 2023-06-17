@@ -1,0 +1,125 @@
+:root {
+  --color-dark: rgb(18, 19, 20);
+  --color-dark2: rgb(32, 32, 20);
+  --color-dark3: rgb(22, 22, 20);
+  --color-white: rgb(255, 255, 255);
+  --color-light: rgb(207, 221, 227);
+  --color-green: rgb(80, 195, 111);
+  --color-green2: rgb(57, 146, 100);
+  --color-red: rgb(247, 85, 80);
+  --color-red2: rgb(146, 22, 17);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+form>input,
+form>button {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.4rem;
+}
+
+form>button {
+  background-color: var(--color-green);
+  color: var(--color-dark);
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 0.2rem;
+  transition: .2s;
+}
+
+form #sign-up {
+  background-color: var(--color-dark);
+  border: 0.05rem solid;
+  color: var(--color-light);
+  font-weight: bold;
+  margin-top: 0.2rem;
+  transition: .2s;
+}
+
+form #sign-up:hover {
+  background-color: var(--color-light);
+  border-color: var(--color-light);
+  color: var(--color-dark);
+  cursor: pointer;
+}
+
+form>button:hover {
+  background-color: var(--color-green2);
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+#login {
+  display: block;
+  transition: 2s ease;
+}
+
+#login-content {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+#logged {
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+#logged-content {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#calculator {
+  min-width: 320px;
+  width: 60vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#history {
+  min-width: 320px;
+  width: 40vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#alert-msg {
+  font-size: 0.7rem;
+  color: var(--color-red);
+}

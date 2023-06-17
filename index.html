@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+
+  <link rel="shortcut icon" href="./img/icon.png" type="image/x-icon">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <section id="login">
+    <div id="login-content">
+      <h1>Login</h1>
+      <form>
+        <input id="user" type="text" placeholder="Username">
+        <input id="password" type="password" placeholder="Password">
+        <button id="sign-in" onclick="signIn()">Sign in</button>
+        <button id="sign-up" onclick="signUp()">Sign up</button>
+      </form>
+      <p id="alert-msg"></p>
+    </div>
+  </section>
+
+  <main>
+    <section id="logged">
+      <div id="logged-content">
+        <section id="calculator">
+          <h1>calculator</h1>
+        </section>
+
+        <section id="history">
+          <h1>history</h1>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script src="./js/script.js"></script>
+  <script src="./js/calculator.js"></script>
+</body>
+</html>
