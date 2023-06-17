@@ -1,7 +1,7 @@
 :root {
-  --color-dark: rgb(18, 19, 20);
-  --color-dark2: rgb(32, 32, 20);
-  --color-dark3: rgb(22, 22, 20);
+  --color-dark: rgb(24, 25, 27);
+  --color-dark2: rgb(18, 21, 25);
+  --color-dark3: rgb(20, 21, 22);
   --color-white: rgb(255, 255, 255);
   --color-light: rgb(207, 221, 227);
   --color-green: rgb(80, 195, 111);
@@ -71,7 +71,7 @@ h1 {
 }
 
 #login {
-  display: block;
+  display: none;
   transition: 2s ease;
 }
 
@@ -86,40 +86,99 @@ h1 {
 }
 
 #logged {
-  display: none;
+  display: block;
   height: 100vh;
   width: 100vw;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
 }
 
 #logged-content {
   height: 100vh;
   width: 100vw;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid: auto-flow / 1fr 1fr;
 }
 
 #calculator {
-  min-width: 320px;
-  width: 60vw;
+  padding: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 #history {
-  min-width: 320px;
-  width: 40vw;
+  background-color: var(--color-dark3);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+#calculator-body {
+  width: 232px;
+  background-color: #202024;
+  border: #707072 0.02rem solid;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px #00000040;
+  overflow: hidden;
+}
+
 #alert-msg {
   font-size: 0.7rem;
   color: var(--color-red);
+}
+
+.result {
+  height: 80px;
+  padding: 20px;
+  text-align: right;
+  color: var(--color-white);
+  font-family: "myriad-pro", sans-serif;
+  font-weight: lighter;
+  font-size: 3rem;
+}
+
+#calculator-body>.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+}
+
+.buttons button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 2.938rem;
+  color: #E6E6E6;
+  font-weight: 400;
+  font-size: 1.2rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.button-zero {
+  grid-column: span 2;
+}
+
+.bg-gray {
+  background-color: #363639;
+}
+
+.bg-light-gray {
+  background-color: #57575A;
+}
+
+.bg-orange {
+  background-color: #ffa01b;
+}
+
+button:active {
+  opacity: 0.7;
+}
+
+
+@media (max-width: 600px) {
+  #logged-content {
+    grid: auto-flow / 1fr;
+  }
 }
