@@ -1,3 +1,5 @@
+const localStorageKey = 'operations';
+const operationsValues = JSON.parse(localStorage.getItem(localStorageKey) || '[]')
 const result = document.getElementById('result');
 const buttons = document.querySelectorAll('.buttons button');
 
@@ -5,13 +7,16 @@ let currentNumber = '';
 let firstOperand = null;
 let operator = null;
 let restart = false;
+let resultValue;
+let acc = '';
+let operation = '';
 
 function updateResult(originClear = false) {
-  result.innerText = originClear ? 0 : currentNumber.replace('.', ',');
+  result.innerText = originClear ? 0 : currentNumber;
 };
 
 function addDigit(digit) {
-  if (digit === ',' && (currentNumber.includes(',') || !currentNumber))
+  if (digit === '.' && (currentNumber.includes('.') || !currentNumber))
     return;
 
   if (restart) {
@@ -22,23 +27,24 @@ function addDigit(digit) {
   };
 
   updateResult();
+  acc += digit;
 };
 
 function setOperator(newOperator) {
   if (currentNumber) {
     calculate();
-
-    firstOperand = parseFloat(currentNumber.replace(',', '.'));
-    currentNumber = '';
   };
 
+  firstOperand = parseFloat(currentNumber);
+  currentNumber = '';
   operator = newOperator;
+  acc += newOperator;
 };
 
 function calculate() {
   if (operator === null || firstOperand === null) return;
-  let secondOperand = parseFloat(currentNumber.replace(',', '.'));
-  let resultValue;
+  let secondOperand = parseFloat(currentNumber);
+
 
   switch (operator) {
     case '+':
@@ -74,6 +80,8 @@ function clearCalculator() {
   firstOperand = null;
   operator = null;
   updateResult(true);
+  acc = '';
+  operation = '';
 }
 
 function setPercentage() {
@@ -89,23 +97,37 @@ function setPercentage() {
 
   currentNumber = result.toString();
   updateResult();
+  acc += '%';
+};
+
+function saveOperation() {
+  operationsValues.push({
+    Operation: operation,
+  });
+
+  localStorage.setItem(localStorageKey, JSON.stringify(operationsValues));
 };
 
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
     const buttonText = button.innerText;
-    if (/^[0-9,]+$/.test(buttonText)) {
+    if (/^[0-9.]+$/.test(buttonText)) {
       addDigit(buttonText);
     } else if (['+', '–', '×', '÷'].includes(buttonText)) {
       setOperator(buttonText);
     } else if (buttonText === '=') {
       calculate();
+      operation = acc + ' = ' + resultValue;
+      console.log(operation);
+      saveOperation();
+      acc = '';
     } else if (buttonText === 'AC') {
       clearCalculator();
     } else if (buttonText === '±') {
       currentNumber = (
         parseFloat(currentNumber || firstOperand) * -1
       ).toString();
+      acc = '-' + acc;
       updateResult();
     } else if (buttonText === '%') {
       setPercentage();
