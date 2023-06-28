@@ -109,8 +109,15 @@ h1 {
 #history {
   background-color: var(--color-dark3);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
+}
+
+#operations-list li {
+  padding: 0.4rem;
+  list-style: none;
 }
 
 #calculator-body {

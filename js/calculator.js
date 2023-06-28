@@ -106,6 +106,8 @@ function saveOperation() {
   });
 
   localStorage.setItem(localStorageKey, JSON.stringify(operationsValues));
+
+  showOperationHistory();
 };
 
 buttons.forEach((button) => {
@@ -134,3 +136,19 @@ buttons.forEach((button) => {
     };
   });
 });
+
+function showOperationHistory() {
+  const history = document.getElementById('operations-list');
+
+  history.innerHTML = '';
+
+  for (let i = 0; i < operationsValues.length; i++) {
+    history.innerHTML += `
+        <li>
+          Operation ${i + 1}: <strong>${operationsValues[i].Operation}</strong>
+        </li>
+      `
+  }
+};
+
+showOperationHistory();

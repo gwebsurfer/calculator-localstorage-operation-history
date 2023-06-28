@@ -18,9 +18,10 @@ function signUp() {
   };
 
   if (!inputUser.value || !inputPass.value) {
+    alertMsg.style.color = 'rgb(247, 85, 80)';
     alertMsg.innerHTML = 'Digite os dados de acesso!';
-    inputUser.style.outline = '0.8px solid red';
-    inputPass.style.outline = '0.8px solid red';
+    inputUser.style.outline = 'rgb(247, 85, 80) 0.8px solid';
+    inputPass.style.outline = 'rgb(247, 85, 80) 0.8px solid';
     return;
   };
 
@@ -32,6 +33,10 @@ function signUp() {
     saveNewUser();
     inputUser.value = '';
     inputPass.value = '';
+    inputUser.style.outline = 'none';
+    inputPass.style.outline = 'none';
+    alertMsg.style.color = 'rgb(80, 195, 111)';
+    alertMsg.innerHTML = 'Dados de acesso salvos!';
     return;
   }
 
@@ -42,7 +47,10 @@ function signUp() {
   saveNewUser();
   inputUser.value = '';
   inputPass.value = '';
-
+  inputUser.style.outline = 'none';
+  inputPass.style.outline = 'none';
+  alertMsg.style.color = 'rgb(80, 195, 111)';
+  alertMsg.innerHTML = 'Dados de acesso salvos!';
 };
 
 function saveNewUser() {
@@ -50,6 +58,15 @@ function saveNewUser() {
 };
 
 function signIn() {
+
+  if (loginValues.length === 0 || !inputUser.value || !inputPass.value) {
+    alertMsg.style.color = 'rgb(247, 85, 80)';
+    alertMsg.innerHTML = 'Digite os dados de acesso!';
+    inputUser.style.outline = 'rgb(247, 85, 80) 0.8px solid';
+    inputPass.style.outline = 'rgb(247, 85, 80) 0.8px solid';
+    return;
+  };
+
   for (let i in loginValues) {
     if (loginValues[i].Username === inputUser.value && loginValues[i].Password === inputPass.value) {
       login.style.display = 'none';
@@ -57,8 +74,9 @@ function signIn() {
       return;
     }
 
+    alertMsg.style.color = 'rgb(247, 85, 80)';
     alertMsg.innerHTML = 'Dados de acesso inválidos!';
-    inputUser.style.outline = '0.8px solid red';
-    inputPass.style.outline = '0.8px solid red';
+    inputUser.style.outline = 'rgb(247, 85, 80) 0.8px solid';
+    inputPass.style.outline = 'rgb(247, 85, 80) 0.8px solid';
   };
 };
